@@ -1,0 +1,429 @@
+/* ============================================================
+   Diabetic-Friendly Nigerian Food App — Styles
+   Theme: warm greens, earthy tones, clean & accessible
+   ============================================================ */
+
+/* ── Reset / Base ────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green-dark:    #1a5c2a;
+  --green-mid:     #2e7d46;
+  --green-light:   #4caf6e;
+  --green-pale:    #e8f5ec;
+  --amber:         #e07b39;
+  --amber-light:   #fdf3eb;
+  --text-dark:     #1c2b1e;
+  --text-mid:      #3d5240;
+  --text-light:    #6b8870;
+  --border:        #c8dece;
+  --white:         #ffffff;
+  --shadow:        0 2px 12px rgba(26, 92, 42, 0.12);
+  --radius:        12px;
+  --transition:    0.2s ease;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--green-pale);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.app-header {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+  color: var(--white);
+  padding: 1.5rem 1rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header h1 {
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.app-tagline {
+  font-size: 0.875rem;
+  opacity: 0.85;
+}
+
+/* ── Main Layout ─────────────────────────────────────────── */
+.app-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+/* ── Day Navigator ───────────────────────────────────────── */
+.day-navigator {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.day-badge {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  min-width: 6rem;
+}
+
+.month-badge {
+  background: var(--green-light);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.nav-controls input[type="number"] {
+  width: 4.5rem;
+  padding: 0.4rem 0.5rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--text-dark);
+  transition: border-color var(--transition);
+}
+
+.nav-controls input[type="number"]:focus {
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(46,125,70,0.15);
+}
+
+/* Remove spinner arrows from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition), opacity var(--transition);
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(0.97); }
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-nav {
+  background: var(--green-mid);
+  color: var(--white);
+  padding: 0.45rem 0.85rem;
+  font-size: 1.1rem;
+}
+.btn-nav:hover:not(:disabled) { background: var(--green-dark); }
+
+.btn-go {
+  background: var(--green-light);
+  color: var(--white);
+}
+.btn-go:hover { background: var(--green-mid); }
+
+.btn-today {
+  background: var(--amber);
+  color: var(--white);
+}
+.btn-today:hover { background: #c0672c; }
+
+/* ── Disclaimer ──────────────────────────────────────────── */
+.disclaimer {
+  background: #fff8e1;
+  border-left: 4px solid var(--amber);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #5c4000;
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+/* ── Plan Container ──────────────────────────────────────── */
+#plan-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Meal Cards ──────────────────────────────────────────── */
+.meal-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+
+.meal-card:hover { box-shadow: 0 6px 24px rgba(26,92,42,0.18); }
+
+.meal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-light) 100%);
+  color: var(--white);
+  padding: 0.85rem 1.1rem;
+}
+
+.meal-emoji { font-size: 1.5rem; }
+
+.meal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ── Meal Body ───────────────────────────────────────────── */
+.meal-body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Food section */
+.food-section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 0.35rem;
+}
+
+.meal-description {
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  margin-bottom: 0.5rem;
+}
+
+.gi-badge {
+  display: inline-block;
+  background: var(--green-pale);
+  border: 1px solid var(--green-light);
+  color: var(--green-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.meal-notes {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+
+/* Drink section */
+.drink-section {
+  background: var(--amber-light);
+  border: 1px solid #f5c99b;
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.drink-section h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #7a3d10;
+  margin-bottom: 0.35rem;
+}
+
+.drink-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #5a2c08;
+  margin-bottom: 0.25rem;
+}
+
+.drink-description {
+  font-size: 0.82rem;
+  color: #7a4a20;
+  margin-bottom: 0.5rem;
+}
+
+.drink-benefits {
+  font-size: 0.8rem;
+  color: #5a6e35;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* ── Details / Summary (Accordion) ──────────────────────── */
+details {
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+summary {
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  background: var(--green-pale);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+  transition: background-color var(--transition);
+}
+
+summary:hover { background: #d5eedb; }
+
+summary::before {
+  content: '▶';
+  font-size: 0.6rem;
+  transition: transform var(--transition);
+}
+
+details[open] summary::before { transform: rotate(90deg); }
+
+details[open] summary {
+  border-radius: 8px 8px 0 0;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background: var(--white);
+}
+
+.ingredient-list li {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #f0f4f1;
+}
+
+.ingredient-list li:last-child { border-bottom: none; }
+
+.ingredient-list li::before {
+  content: '• ';
+  color: var(--green-light);
+  font-weight: bold;
+}
+
+.preparation {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* Drink section details override colours */
+.drink-section details summary {
+  background: #fae9d5;
+  color: #7a3d10;
+}
+
+.drink-section details summary:hover { background: #f5d7b8; }
+
+.drink-section .ingredient-list,
+.drink-section .preparation {
+  border-color: #f5c99b;
+  background: #fffaf5;
+}
+
+.drink-section .ingredient-list li::before {
+  color: var(--amber);
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .day-navigator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-controls { margin-left: 0; }
+  #plan-container { grid-template-columns: 1fr; }
+}
+
+/* ── Focus / Accessibility ───────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--green-light);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
